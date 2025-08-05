@@ -5,228 +5,349 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peter's Pepper Co - Fuel for Flavor</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Racing Stripes Background -->
+    <div class="racing-stripes"></div>
+    
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav class="navbar">
         <div class="nav-container">
             <!-- Logo -->
             <div class="logo">
-                <div class="logo-circle">
-                    <span class="logo-car">🏎️</span>
+                <div class="logo-emblem">
+                    <div class="speedometer">
+                        <div class="needle"></div>
+                        <span class="speed-text">🌶️</span>
+                    </div>
                 </div>
                 <div class="logo-text">
-                    <div class="logo-main">PETER'S PEPPER CO</div>
-                    <div class="logo-tagline">FUEL FOR FLAVOR</div>
+                    <div class="brand-name">PETER'S PEPPER CO</div>
+                    <div class="tagline">FUEL FOR FLAVOR</div>
                 </div>
             </div>
 
-            <!-- Desktop Navigation -->
+            <!-- Navigation Links -->
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">Story</a>
-                <a href="products.html" class="nav-link">Products</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <button class="order-btn">Order Now</button>
+                <a href="index.html" class="nav-link active">
+                    <span class="nav-icon">🏠</span>
+                    <span>Pit Stop</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <span class="nav-icon">🏁</span>
+                    <span>Our Track Record</span>
+                </a>
+                <a href="products.html" class="nav-link">
+                    <span class="nav-icon">🔥</span>
+                    <span>Fuel Options</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <span class="nav-icon">📞</span>
+                    <span>Crew Chief</span>
+                </a>
+                <button class="turbo-btn">
+                    <span class="btn-flames">🔥</span>
+                    ORDER NOW
+                    <span class="btn-speed">💨</span>
+                </button>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
+            <!-- Mobile Menu -->
+            <button class="mobile-menu-btn">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
             </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="about.html" class="mobile-link">Story</a>
-            <a href="products.html" class="mobile-link">Products</a>
-            <a href="contact.html" class="mobile-link">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <!-- Animated Background -->
-        <div class="hero-bg">
-            <div class="floating-element element-1"></div>
-            <div class="floating-element element-2"></div>
-            <div class="floating-element element-3"></div>
-            <div class="floating-element element-4"></div>
+    <section class="hero-section">
+        <!-- Animated Background Elements -->
+        <div class="speed-lines"></div>
+        <div class="floating-flames">
+            <div class="flame flame-1">🔥</div>
+            <div class="flame flame-2">🌶️</div>
+            <div class="flame flame-3">🔥</div>
+            <div class="flame flame-4">🌶️</div>
+            <div class="flame flame-5">🔥</div>
         </div>
 
         <div class="hero-content">
-            <div class="hero-badge">
-                <span class="pepper-icon">🌶️</span>
-                <span class="badge-text">Family Crafted Since 2024</span>
+            <!-- Racing Number Badge -->
+            <div class="racing-number">
+                <span class="number">01</span>
+                <span class="text">SINCE 2024</span>
             </div>
-            
+
+            <!-- Main Hero Text -->
             <h1 class="hero-title">
-                <span class="gradient-text">Peter's Pepper Co</span>
+                <span class="title-line-1">REV UP YOUR</span>
+                <span class="title-line-2 gradient-text">TASTE BUDS</span>
+                <span class="title-line-3">WITH PREMIUM HOT SAUCE</span>
             </h1>
-            
-            <p class="hero-subtitle">
-                Fuel for Flavor - Family-crafted hot sauce made from our own garden with love, tradition, and a whole lot of heat!
+
+            <p class="hero-description">
+                From our family garden to your victory lap - we craft the highest octane hot sauces 
+                that'll put your flavor game in the fast lane. No artificial ingredients, just pure heat!
             </p>
 
-            <div class="hero-buttons">
-                <button class="btn-primary">
-                    <span class="btn-icon">🛒</span>
-                    <span>Taste Our Sauces</span>
-                    <span class="btn-arrow">→</span>
+            <!-- Performance Stats -->
+            <div class="performance-stats">
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">FUEL GRADES</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">DRIVERS</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">NATURAL</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hero-actions">
+                <button class="primary-action">
+                    <span class="action-icon">🏁</span>
+                    <span class="action-text">START YOUR ENGINES</span>
+                    <span class="action-arrow">→</span>
                 </button>
-                <a href="about.html" class="btn-secondary">Our Story</a>
+                <a href="about.html" class="secondary-action">
+                    <span class="action-icon">📖</span>
+                    <span>Our Racing Story</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Speedometer Display -->
+        <div class="hero-speedometer">
+            <div class="gauge">
+                <div class="gauge-needle"></div>
+                <div class="gauge-center">
+                    <span class="heat-level">MILD</span>
+                    <span class="to">TO</span>
+                    <span class="heat-level">WILD</span>
+                </div>
             </div>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <span class="scroll-arrow">↓</span>
+        <div class="scroll-down">
+            <div class="scroll-text">SCROLL TO ACCELERATE</div>
+            <div class="scroll-arrow">↓</div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
+    <!-- Fuel Options (Products) Section -->
+    <section class="fuel-section">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-icon">👥</div>
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Happy Customers</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">🏆</div>
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Unique Flavors</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">❤️</div>
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Family Made</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">⭐</div>
-                    <div class="stat-number">5★</div>
-                    <div class="stat-label">Average Rating</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Products Preview -->
-    <section class="featured-products">
-        <div class="container">
+            <!-- Section Header -->
             <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-icon">⛽</span>
+                    <span class="badge-text">PREMIUM FUEL OPTIONS</span>
+                </div>
                 <h2 class="section-title">
-                    Our <span class="gradient-text">Featured Sauces</span>
+                    Choose Your <span class="gradient-text">Heat Grade</span>
                 </h2>
-                <div class="title-underline"></div>
+                <p class="section-subtitle">
+                    Each sauce is precision-engineered for maximum flavor performance
+                </p>
             </div>
 
-            <div class="products-preview">
-                <div class="product-card">
-                    <div class="product-header pineapple-gradient">
-                        <div class="product-icon">🍍</div>
-                        <h3>Peter's Pineapple</h3>
-                        <div class="heat-level">
-                            <span class="flame active">🔥</span>
-                            <span class="flame">🔥</span>
-                            <span class="flame">🔥</span>
-                            <span class="flame">🔥</span>
-                            <span class="flame">🔥</span>
+            <!-- Fuel Cards -->
+            <div class="fuel-grid">
+                <!-- Regular Fuel - Pineapple -->
+                <div class="fuel-card regular">
+                    <div class="fuel-header">
+                        <div class="fuel-badge">REGULAR</div>
+                        <div class="fuel-icon">🍍</div>
+                        <h3 class="fuel-name">Peter's Pineapple</h3>
+                        <div class="octane-rating">87</div>
+                    </div>
+                    <div class="fuel-specs">
+                        <div class="heat-gauge">
+                            <div class="gauge-bar">
+                                <div class="gauge-fill" style="width: 20%"></div>
+                            </div>
+                            <span class="heat-text">Sweet & Smooth</span>
+                        </div>
+                        <div class="fuel-description">
+                            Perfect for daily driving. Tropical sweetness with a gentle warmth 
+                            that won't leave you stranded on the side of the road.
+                        </div>
+                        <div class="fuel-specs-list">
+                            <span class="spec">🥞 Pancakes</span>
+                            <span class="spec">🍗 Grilled Chicken</span>
+                            <span class="spec">🌮 Fish Tacos</span>
                         </div>
                     </div>
-                    <div class="product-body">
-                        <p>Our mild and sweet tropical blend that started it all!</p>
-                        <div class="product-footer">
-                            <span class="price">$8.99</span>
-                            <button class="product-btn">Order Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-header peach-gradient">
-                        <div class="product-icon">🍑</div>
-                        <h3>Peter's Peach</h3>
-                        <div class="heat-level">
-                            <span class="flame active">🔥</span>
-                            <span class="flame active">🔥</span>
-                            <span class="flame">🔥</span>
-                            <span class="flame">🔥</span>
-                            <span class="flame">🔥</span>
-                        </div>
-                    </div>
-                    <div class="product-body">
-                        <p>Less sweet, more spice! Perfect summer heat.</p>
-                        <div class="product-footer">
-                            <span class="price">$9.99</span>
-                            <button class="product-btn">Order Now</button>
-                        </div>
+                    <div class="fuel-footer">
+                        <div class="price">$8.99<span class="price-unit">/bottle</span></div>
+                        <button class="fuel-btn">Fill 'Er Up</button>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-header atomic-gradient">
-                        <div class="product-icon">🌋</div>
-                        <h3>Atomic Apricot</h3>
-                        <div class="heat-level">
-                            <span class="flame active">🔥</span>
-                            <span class="flame active">🔥</span>
-                            <span class="flame active">🔥</span>
-                            <span class="flame active">🔥</span>
-                            <span class="flame">🔥</span>
+                <!-- Plus Fuel - Peach -->
+                <div class="fuel-card plus">
+                    <div class="fuel-header">
+                        <div class="fuel-badge">PLUS</div>
+                        <div class="fuel-icon">🍑</div>
+                        <h3 class="fuel-name">Peter's Peach</h3>
+                        <div class="octane-rating">91</div>
+                    </div>
+                    <div class="fuel-specs">
+                        <div class="heat-gauge">
+                            <div class="gauge-bar">
+                                <div class="gauge-fill" style="width: 60%"></div>
+                            </div>
+                            <span class="heat-text">Balanced Performance</span>
+                        </div>
+                        <div class="fuel-description">
+                            The sweet spot between flavor and heat. Peachy sweetness with 
+                            enough kick to keep things interesting on long hauls.
+                        </div>
+                        <div class="fuel-specs-list">
+                            <span class="spec">🍖 BBQ Ribs</span>
+                            <span class="spec">🍕 Pizza</span>
+                            <span class="spec">🥙 Wraps</span>
                         </div>
                     </div>
-                    <div class="product-body">
-                        <p>A little sweet, a LOT of heat! Abigail's favorite.</p>
-                        <div class="product-footer">
-                            <span class="price">$10.99</span>
-                            <button class="product-btn">Order Now</button>
+                    <div class="fuel-footer">
+                        <div class="price">$9.99<span class="price-unit">/bottle</span></div>
+                        <button class="fuel-btn">Fill 'Er Up</button>
+                    </div>
+                </div>
+
+                <!-- Premium Fuel - Atomic Apricot -->
+                <div class="fuel-card premium">
+                    <div class="fuel-header">
+                        <div class="fuel-badge">PREMIUM</div>
+                        <div class="fuel-icon">🌋</div>
+                        <h3 class="fuel-name">Atomic Apricot</h3>
+                        <div class="octane-rating">98</div>
+                    </div>
+                    <div class="fuel-specs">
+                        <div class="heat-gauge">
+                            <div class="gauge-bar">
+                                <div class="gauge-fill" style="width: 95%"></div>
+                            </div>
+                            <span class="heat-text">Maximum Performance</span>
+                        </div>
+                        <div class="fuel-description">
+                            High-octane heat for serious drivers only. Abigail's favorite blend 
+                            delivers explosive flavor that'll blow your doors off!
+                        </div>
+                        <div class="fuel-specs-list">
+                            <span class="spec">🔥 Dare Games</span>
+                            <span class="spec">🌶️ Chili</span>
+                            <span class="spec">💀 Extreme Wings</span>
                         </div>
                     </div>
+                    <div class="fuel-footer">
+                        <div class="price">$10.99<span class="price-unit">/bottle</span></div>
+                        <button class="fuel-btn">Fill 'Er Up</button>
+                    </div>
+                    <div class="warning-flag">⚠️ EXTREME HEAT</div>
                 </div>
             </div>
 
-            <div class="view-all">
-                <a href="products.html" class="btn-secondary">View All Products</a>
+            <!-- View All Products -->
+            <div class="section-footer">
+                <a href="products.html" class="view-all-btn">
+                    <span class="btn-icon">🏁</span>
+                    <span>Visit the Full Garage</span>
+                    <span class="btn-arrow">→</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Story Preview -->
-    <section class="story-preview">
+    <!-- Racing Heritage Section -->
+    <section class="heritage-section">
         <div class="container">
-            <div class="story-content">
-                <div class="story-text">
-                    <h2>From Garden to Bottle</h2>
-                    <p class="story-lead">What started as a family garden project has grown into something truly special.</p>
-                    <p>With Peter as our enthusiastic young spokesperson and Abigail as our fearless taste-tester, we've turned our backyard pepper harvest into a labor of love.</p>
-                    <a href="about.html" class="story-link">Read Our Full Story →</a>
+            <div class="heritage-content">
+                <div class="heritage-text">
+                    <div class="heritage-badge">
+                        <span class="badge-icon">🏆</span>
+                        <span class="badge-text">RACING HERITAGE</span>
+                    </div>
+                    <h2 class="heritage-title">
+                        From Backyard <span class="gradient-text">to Victory Lane</span>
+                    </h2>
+                    <p class="heritage-description">
+                        What started as Peter and Abigail experimenting with peppers in our family garden 
+                        has evolved into a championship-level hot sauce operation. We bring the same 
+                        precision, passion, and pursuit of perfection that defines racing to every bottle we craft.
+                    </p>
+                    <div class="heritage-features">
+                        <div class="feature">
+                            <span class="feature-icon">🌱</span>
+                            <span class="feature-text">Garden-to-Garage Fresh</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">👨‍👩‍👧‍👦</span>
+                            <span class="feature-text">Family Racing Team</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔬</span>
+                            <span class="feature-text">Precision Crafted</span>
+                        </div>
+                    </div>
+                    <a href="about.html" class="heritage-link">
+                        <span class="link-icon">📖</span>
+                        <span>Read Our Full Racing Story</span>
+                        <span class="link-arrow">→</span>
+                    </a>
                 </div>
-                <div class="story-visual">
-                    <div class="story-card">
-                        <div class="story-emoji">🌱➡️🌶️➡️🍯</div>
-                        <h3>From Garden to Bottle</h3>
-                        <p>Every sauce begins in our family garden, where Peter and Abigail help tend the peppers.</p>
+                <div class="heritage-visual">
+                    <div class="trophy-case">
+                        <div class="trophy">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="trophy-text">
+                                <div class="trophy-title">Best New Sauce 2024</div>
+                                <div class="trophy-subtitle">Local Flavor Championship</div>
+                            </div>
+                        </div>
+                        <div class="racing-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Happy Drivers</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">0</div>
+                                <div class="stat-label">DNFs (Did Not Finish)</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Final CTA Section -->
+    <section class="final-cta">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Add Some Fuel to Your Flavor?</h2>
-                <p>Join hundreds of families who've discovered the perfect heat for every meal.</p>
-                <div class="cta-buttons">
-                    <a href="products.html" class="btn-primary">Shop Now</a>
-                    <a href="contact.html" class="btn-secondary">Get In Touch</a>
+                <div class="checkered-flag">🏁</div>
+                <h2 class="cta-title">Ready to Cross the Finish Line?</h2>
+                <p class="cta-description">
+                    Join the Peter's Pepper Co racing family and fuel your flavor journey today!
+                </p>
+                <div class="cta-actions">
+                    <button class="cta-primary">
+                        <span class="btn-flames">🔥</span>
+                        <span>Start Your Order</span>
+                        <span class="btn-speed">💨</span>
+                    </button>
+                    <a href="contact.html" class="cta-secondary">
+                        <span class="btn-icon">📞</span>
+                        <span>Contact Our Crew</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -237,18 +358,27 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <div class="logo-circle small">
-                        <span class="logo-car">🏎️</span>
+                    <div class="logo-emblem small">
+                        <div class="speedometer">
+                            <span class="speed-text">🌶️</span>
+                        </div>
                     </div>
-                    <div class="logo-text">
-                        <div class="logo-main">PETER'S PEPPER CO</div>
-                        <div class="logo-tagline">FUEL FOR FLAVOR</div>
+                    <div class="footer-text">
+                        <div class="brand-name">PETER'S PEPPER CO</div>
+                        <div class="tagline">FUEL FOR FLAVOR</div>
                     </div>
                 </div>
                 
-                <div class="footer-text">
-                    <p>© 2024 Peter's Pepper Co - Made with ❤️ and 🌶️ by our family for yours</p>
-                    <p>Fuel for Flavor - From our garden to your table, one bottle at a time</p>
+                <div class="footer-links">
+                    <a href="index.html">Pit Stop</a>
+                    <a href="about.html">Track Record</a>
+                    <a href="products.html">Fuel Options</a>
+                    <a href="contact.html">Crew Chief</a>
+                </div>
+                
+                <div class="footer-info">
+                    <p>© 2024 Peter's Pepper Co - Crafted with ❤️ and 🌶️</p>
+                    <p>From Our Garden to Your Victory Lap</p>
                 </div>
             </div>
         </div>
