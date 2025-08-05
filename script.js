@@ -1,201 +1,55 @@
-// Peter's Pepper Co - Main JavaScript File
+// Peter's Pepper Co - Racing Theme JavaScript
 
 // DOM Content Loaded Event Listener
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Mobile Navigation Toggle
-    initMobileNavigation();
+    // Initialize all components
+    initNavigation();
+    initScrollEffects();
+    initAnimations();
+    initInteractiveElements();
+    initPerformanceCounters();
+    initMobileMenu();
     
-    // Contact Form Handler
-    initContactForm();
+    // Add racing sound effects (optional)
+    initSoundEffects();
     
-    // Smooth Scrolling for Internal Links
-    initSmoothScrolling();
-    
-    // Heat Level Animations
-    initHeatLevelAnimations();
-    
-    // Newsletter Signup
-    initNewsletterSignup();
-    
-    // Page-specific functionality
-    initPageSpecificFeatures();
+    console.log('🏁 Peter\'s Pepper Co Racing Engine Started! 🌶️');
 });
 
-// Mobile Navigation Toggle
-function initMobileNavigation() {
-    // Create mobile menu button if it doesn't exist
-    const nav = document.querySelector('nav');
-    const navLinks = document.querySelector('.nav-links');
+// Navigation Functions
+function initNavigation() {
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    if (nav && navLinks) {
-        // Create hamburger menu button
-        const mobileMenuBtn = document.createElement('button');
-        mobileMenuBtn.className = 'mobile-menu-btn';
-        mobileMenuBtn.innerHTML = '☰';
-        mobileMenuBtn.setAttribute('aria-label', 'Toggle mobile menu');
-        
-        // Insert before nav links
-        nav.insertBefore(mobileMenuBtn, navLinks);
-        
-        // Toggle mobile menu
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('mobile-open');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
-        });
-        
-        // Close mobile menu when clicking on links
-        const navItems = navLinks.querySelectorAll('a');
-        navItems.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-open');
-                mobileMenuBtn.innerHTML = '☰';
-            });
-        });
-    }
-}
-
-// Contact Form Handler
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const formObject = {};
-            
-            // Convert FormData to object
-            for (let [key, value] of formData.entries()) {
-                formObject[key] = value;
-            }
-            
-            // Basic validation
-            if (validateContactForm(formObject)) {
-                // Simulate form submission
-                showFormSuccess();
-                contactForm.reset();
-            }
-        });
-        
-        // Real-time validation
-        const requiredFields = contactForm.querySelectorAll('[required]');
-        requiredFields.forEach(field => {
-            field.addEventListener('blur', function() {
-                validateField(field);
-            });
-        });
-    }
-}
-
-// Form Validation
-function validateContactForm(data) {
-    let isValid = true;
-    
-    // Check required fields
-    const requiredFields = ['name', 'email', 'subject', 'message'];
-    
-    requiredFields.forEach(field => {
-        const input = document.getElementById(field);
-        if (!data[field] || data[field].trim() === '') {
-            showFieldError(input, `${field.charAt(0).toUpperCase() + field.slice(1)} is required`);
-            isValid = false;
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(255, 107, 53, 0.3)';
         } else {
-            clearFieldError(input);
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.boxShadow = 'none';
         }
     });
     
-    // Email validation
-    if (data.email && !isValidEmail(data.email)) {
-        const emailInput = document.getElementById('email');
-        showFieldError(emailInput, 'Please enter a valid email address');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-// Individual Field Validation
-function validateField(field) {
-    const value = field.value.trim();
-    
-    if (field.hasAttribute('required') && !value) {
-        showFieldError(field, `${field.name.charAt(0).toUpperCase() + field.name.slice(1)} is required`);
-        return false;
-    }
-    
-    if (field.type === 'email' && value && !isValidEmail(value)) {
-        showFieldError(field, 'Please enter a valid email address');
-        return false;
-    }
-    
-    clearFieldError(field);
-    return true;
-}
-
-// Email Validation Helper
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Show Field Error
-function showFieldError(field, message) {
-    clearFieldError(field);
-    
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'field-error';
-    errorDiv.textContent = message;
-    
-    field.parentNode.appendChild(errorDiv);
-    field.classList.add('error');
-}
-
-// Clear Field Error
-function clearFieldError(field) {
-    const existingError = field.parentNode.querySelector('.field-error');
-    if (existingError) {
-        existingError.remove();
-    }
-    field.classList.remove('error');
-}
-
-// Show Form Success Message
-function showFormSuccess() {
-    const successDiv = document.createElement('div');
-    successDiv.className = 'form-success';
-    successDiv.innerHTML = `
-        <h4>🌶️ Message Sent Successfully!</h4>
-        <p>Thank you for contacting Peter's Pepper Co! We'll get back to you within 24 hours.</p>
-    `;
-    
-    const form = document.getElementById('contactForm');
-    form.parentNode.insertBefore(successDiv, form);
-    
-    // Remove success message after 5 seconds
-    setTimeout(() => {
-        successDiv.remove();
-    }, 5000);
-    
-    // Scroll to success message
-    successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-// Smooth Scrolling for Internal Links
-function initSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
+    // Active nav link highlighting
+    navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+            // Add active class to clicked link
+            this.classList.add('active');
+        });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -204,189 +58,445 @@ function initSmoothScrolling() {
     });
 }
 
-// Heat Level Animations
-function initHeatLevelAnimations() {
-    const heatMeters = document.querySelectorAll('.heat-meter');
+// Mobile Menu Functions
+function initMobileMenu() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
     
-    heatMeters.forEach(meter => {
-        const dots = meter.querySelectorAll('.heat-dot');
-        const activeDots = meter.querySelectorAll('.heat-dot.active');
+    if (mobileMenuBtn) {
+        // Create mobile menu overlay
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'mobile-menu-overlay';
+        mobileMenu.innerHTML = `
+            <div class="mobile-menu-content">
+                <a href="index.html" class="mobile-nav-link">🏠 Pit Stop</a>
+                <a href="about.html" class="mobile-nav-link">🏁 Our Track Record</a>
+                <a href="products.html" class="mobile-nav-link">🔥 Fuel Options</a>
+                <a href="contact.html" class="mobile-nav-link">📞 Crew Chief</a>
+                <button class="mobile-order-btn">
+                    <span class="btn-flames">🔥</span>
+                    ORDER NOW
+                    <span class="btn-speed">💨</span>
+                </button>
+            </div>
+        `;
+        document.body.appendChild(mobileMenu);
         
-        // Animate heat dots on page load
-        setTimeout(() => {
-            activeDots.forEach((dot, index) => {
-                setTimeout(() => {
-                    dot.style.animation = 'heatPulse 0.5s ease-in-out';
-                }, index * 100);
-            });
-        }, 500);
-        
-        // Add hover effect
-        meter.addEventListener('mouseenter', function() {
-            activeDots.forEach(dot => {
-                dot.style.transform = 'scale(1.1)';
-            });
-        });
-        
-        meter.addEventListener('mouseleave', function() {
-            activeDots.forEach(dot => {
-                dot.style.transform = 'scale(1)';
-            });
-        });
-    });
-}
-
-// Newsletter Signup Handler
-function initNewsletterSignup() {
-    const newsletterCheckbox = document.getElementById('newsletter');
-    
-    if (newsletterCheckbox) {
-        newsletterCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                showNewsletterThankYou();
+        // Toggle mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            const menuLines = this.querySelectorAll('.menu-line');
+            mobileMenu.classList.toggle('active');
+            
+            // Animate hamburger lines
+            if (mobileMenu.classList.contains('active')) {
+                menuLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                menuLines[1].style.opacity = '0';
+                menuLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                menuLines[0].style.transform = 'none';
+                menuLines[1].style.opacity = '1';
+                menuLines[2].style.transform = 'none';
             }
         });
+        
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.remove('active');
+                const menuLines = mobileMenuBtn.querySelectorAll('.menu-line');
+                menuLines[0].style.transform = 'none';
+                menuLines[1].style.opacity = '1';
+                menuLines[2].style.transform = 'none';
+            }
+        });
+        
+        // Close menu when clicking on links
+        mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                const menuLines = mobileMenuBtn.querySelectorAll('.menu-line');
+                menuLines[0].style.transform = 'none';
+                menuLines[1].style.opacity = '1';
+                menuLines[2].style.transform = 'none';
+            });
+        });
     }
 }
 
-// Show Newsletter Thank You
-function showNewsletterThankYou() {
-    const checkbox = document.getElementById('newsletter');
-    const label = checkbox.closest('.checkbox-group');
+// Scroll Effects
+function initScrollEffects() {
+    // Parallax effect for hero background elements
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const speedLines = document.querySelector('.speed-lines');
+        const floatingFlames = document.querySelector('.floating-flames');
+        
+        if (speedLines) {
+            speedLines.style.transform = `translateX(${scrolled * 0.5}px)`;
+        }
+        
+        if (floatingFlames) {
+            floatingFlames.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
+    });
     
-    // Create thank you message
-    const thankYou = document.createElement('div');
-    thankYou.className = 'newsletter-thanks';
-    thankYou.innerHTML = '🌶️ Thanks for subscribing!';
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
     
-    label.appendChild(thankYou);
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Special handling for fuel cards
+                if (entry.target.classList.contains('fuel-card')) {
+                    setTimeout(() => {
+                        animateFuelCard(entry.target);
+                    }, 200);
+                }
+                
+                // Special handling for performance stats
+                if (entry.target.classList.contains('performance-stats')) {
+                    animateCounters(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
     
-    // Remove after 3 seconds
-    setTimeout(() => {
-        thankYou.remove();
-    }, 3000);
-}
-
-// Page-specific Features
-function initPageSpecificFeatures() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    switch(currentPage) {
-        case 'index.html':
-        case '':
-            initHomePage();
-            break;
-        case 'products.html':
-            initProductsPage();
-            break;
-        case 'about.html':
-            initAboutPage();
-            break;
-        case 'contact.html':
-            initContactPage();
-            break;
-    }
-}
-
-// Home Page Specific
-function initHomePage() {
-    // Add entrance animation to hero section
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        setTimeout(() => {
-            heroContent.style.opacity = '1';
-            heroContent.style.transform = 'translateY(0)';
-        }, 300);
-    }
-    
-    // Animate feature cards
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card, index) => {
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, 500 + (index * 200));
+    // Observe elements for scroll animations
+    document.querySelectorAll('.fuel-card, .heritage-content, .performance-stats, .trophy-case').forEach(el => {
+        observer.observe(el);
     });
 }
 
-// Products Page Specific
-function initProductsPage() {
-    const productCards = document.querySelectorAll('.product-card');
+// Interactive Elements
+function initInteractiveElements() {
+    // Turbo button effects
+    const turboButtons = document.querySelectorAll('.turbo-btn, .primary-action, .cta-primary');
+    turboButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            const flames = this.querySelector('.btn-flames');
+            const speed = this.querySelector('.btn-speed');
+            
+            if (flames) flames.style.animation = 'bounce 0.5s ease';
+            if (speed) speed.style.animation = 'bounce 0.5s ease 0.1s';
+            
+            // Add engine rev sound effect (optional)
+            playSound('rev');
+        });
+        
+        btn.addEventListener('click', function() {
+            // Button click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+            
+            // Add turbo sound effect (optional)
+            playSound('turbo');
+        });
+    });
     
-    // Add hover effects to product cards
-    productCards.forEach(card => {
+    // Fuel card hover effects
+    const fuelCards = document.querySelectorAll('.fuel-card');
+    fuelCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-            this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+            const octaneRating = this.querySelector('.octane-rating');
+            const fuelIcon = this.querySelector('.fuel-icon');
+            const gaugeFill = this.querySelector('.gauge-fill');
+            
+            if (octaneRating) {
+                octaneRating.style.transform = 'scale(1.1) rotate(360deg)';
+                octaneRating.style.transition = 'all 0.5s ease';
+            }
+            
+            if (fuelIcon) {
+                fuelIcon.style.transform = 'scale(1.2)';
+                fuelIcon.style.filter = 'drop-shadow(0 0 10px rgba(255, 107, 53, 0.5))';
+            }
+            
+            if (gaugeFill) {
+                gaugeFill.style.transform = 'scaleX(1.05)';
+            }
         });
         
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-        });
-    });
-    
-    // Animate cards on scroll
-    observeProductCards();
-}
-
-// About Page Specific
-function initAboutPage() {
-    const valueItems = document.querySelectorAll('.value-item');
-    
-    // Animate value items on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
+            const octaneRating = this.querySelector('.octane-rating');
+            const fuelIcon = this.querySelector('.fuel-icon');
+            const gaugeFill = this.querySelector('.gauge-fill');
+            
+            if (octaneRating) {
+                octaneRating.style.transform = '';
+            }
+            
+            if (fuelIcon) {
+                fuelIcon.style.transform = '';
+                fuelIcon.style.filter = '';
+            }
+            
+            if (gaugeFill) {
+                gaugeFill.style.transform = '';
             }
         });
     });
     
-    valueItems.forEach(item => {
-        observer.observe(item);
+    // Fuel buttons
+    const fuelButtons = document.querySelectorAll('.fuel-btn');
+    fuelButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const card = this.closest('.fuel-card');
+            const fuelName = card.querySelector('.fuel-name').textContent;
+            
+            // Show fuel selection animation
+            showFuelSelection(fuelName);
+        });
     });
+    
+    // Speedometer interaction
+    const speedometer = document.querySelector('.speedometer');
+    if (speedometer) {
+        speedometer.addEventListener('click', function() {
+            const needle = this.querySelector('.needle');
+            if (needle) {
+                needle.style.animation = 'none';
+                setTimeout(() => {
+                    needle.style.animation = 'needleMove 3s ease-in-out infinite alternate';
+                }, 100);
+            }
+        });
+    }
 }
 
-// Contact Page Specific
-function initContactPage() {
-    // Add focus effects to form inputs
-    const formInputs = document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea');
+// Performance Counter Animation
+function initPerformanceCounters() {
+    // This will be triggered by scroll observer
+}
+
+function animateCounters(statsContainer) {
+    const statNumbers = statsContainer.querySelectorAll('.stat-number');
     
-    formInputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentNode.classList.add('focused');
-        });
+    statNumbers.forEach(statNumber => {
+        const finalValue = statNumber.textContent;
+        const numericValue = parseInt(finalValue.replace(/\D/g, ''));
         
-        input.addEventListener('blur', function() {
-            if (!this.value) {
-                this.parentNode.classList.remove('focused');
-            }
-        });
+        if (!isNaN(numericValue)) {
+            let currentValue = 0;
+            const increment = numericValue / 50; // 50 steps
+            const suffix = finalValue.replace(/\d/g, '');
+            
+            const counter = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= numericValue) {
+                    statNumber.textContent = finalValue;
+                    clearInterval(counter);
+                } else {
+                    statNumber.textContent = Math.floor(currentValue) + suffix;
+                }
+            }, 40); // Update every 40ms
+        }
     });
 }
 
-// Observe Product Cards for Animation
-function observeProductCards() {
-    const cards = document.querySelectorAll('.product-card');
+// Fuel Card Animation
+function animateFuelCard(card) {
+    const gaugeFill = card.querySelector('.gauge-fill');
+    if (gaugeFill) {
+        const targetWidth = gaugeFill.style.width;
+        gaugeFill.style.width = '0%';
+        
+        setTimeout(() => {
+            gaugeFill.style.transition = 'width 1.5s ease-out';
+            gaugeFill.style.width = targetWidth;
+        }, 300);
+    }
+}
+
+// Fuel Selection Animation
+function showFuelSelection(fuelName) {
+    // Create selection popup
+    const popup = document.createElement('div');
+    popup.className = 'fuel-selection-popup';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <div class="popup-icon">⛽</div>
+            <h3>Fuel Selected!</h3>
+            <p>${fuelName} added to your cart</p>
+            <div class="popup-flames">🔥💨🔥</div>
+        </div>
+    `;
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 200);
+    document.body.appendChild(popup);
+    
+    // Show popup
+    setTimeout(() => {
+        popup.classList.add('show');
+    }, 100);
+    
+    // Remove popup after 3 seconds
+    setTimeout(() => {
+        popup.classList.add('hide');
+        setTimeout(() => {
+            popup.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Animation Initialization
+function initAnimations() {
+    // Add CSS for dynamic animations
+    const style = document.createElement('style');
+    style.textContent = `
+        .animate-in {
+            animation: slideInUp 0.8s ease forwards;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
             }
-        });
-    });
-    
-    cards.forEach(card => {
-        observer.observe(card);
-    });
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .mobile-nav-link {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-link:hover {
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+        }
+        
+        .mobile-order-btn {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        .fuel-selection-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 2px solid #ff6b35;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .fuel-selection-popup.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .fuel-selection-popup.hide {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+        
+        .popup-content h3 {
+            color: #ff6b35;
+            font-family: 'Orbitron', monospace;
+            margin: 1rem 0;
+        }
+        
+        .popup-content p {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        
+        .popup-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .popup-flames {
+            font-size: 1.5rem;
+            animation: bounce 1s infinite;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Sound Effects (Optional - requires audio files)
+function initSoundEffects() {
+    // You can add audio files and uncomment this section
+    /*
+    window.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    window.sounds = {
+        rev: 'sounds/engine-rev.mp3',
+        turbo: 'sounds/turbo.mp3',
+        click: 'sounds/click.mp3'
+    };
+    */
+}
+
+function playSound(soundName) {
+    // Uncomment if you add sound files
+    /*
+    if (window.sounds && window.sounds[soundName]) {
+        const audio = new Audio(window.sounds[soundName]);
+        audio.volume = 0.3;
+        audio.play().catch(e => console.log('Sound play failed:', e));
+    }
+    */
 }
 
 // Utility Functions
@@ -402,102 +512,67 @@ function debounce(func, wait) {
     };
 }
 
-// Add CSS animations via JavaScript
-function addAnimationStyles() {
+// Racing Easter Eggs
+document.addEventListener('keydown', function(e) {
+    // Konami Code for special racing animation
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+    window.konamiProgress = window.konamiProgress || 0;
+    
+    if (e.code === konamiCode[window.konamiProgress]) {
+        window.konamiProgress++;
+        if (window.konamiProgress === konamiCode.length) {
+            triggerRacingMode();
+            window.konamiProgress = 0;
+        }
+    } else {
+        window.konamiProgress = 0;
+    }
+});
+
+function triggerRacingMode() {
+    // Secret racing mode animation
+    document.body.style.animation = 'racingMode 5s ease';
+    
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes heatPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        .hero-content {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .feature-card, .product-card, .value-item {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .field-error {
-            color: #e74c3c;
-            font-size: 0.85em;
-            margin-top: 5px;
-        }
-        
-        .form-success {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        
-        .newsletter-thanks {
-            color: #28a745;
-            font-size: 0.9em;
-            margin-top: 5px;
-            font-weight: bold;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: 2px solid #ff6b35;
-            color: #ff6b35;
-            font-size: 1.5em;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu-btn:hover {
-            background: #ff6b35;
-            color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                z-index: 1000;
-            }
-            
-            .nav-links.mobile-open {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 0;
-                border-bottom: 1px solid #eee;
-            }
-            
-            .nav-links a {
-                padding: 15px 20px;
-                display: block;
-            }
+        @keyframes racingMode {
+            0% { filter: hue-rotate(0deg); }
+            25% { filter: hue-rotate(90deg) saturate(2); }
+            50% { filter: hue-rotate(180deg) saturate(3); }
+            75% { filter: hue-rotate(270deg) saturate(2); }
+            100% { filter: hue-rotate(360deg) saturate(1); }
         }
     `;
     document.head.appendChild(style);
+    
+    // Show racing message
+    const message = document.createElement('div');
+    message.textContent = '🏁 RACING MODE ACTIVATED! 🏁';
+    message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #ff6b35, #ff8c42);
+        color: white;
+        padding: 20px 40px;
+        border-radius: 50px;
+        font-family: 'Orbitron', monospace;
+        font-weight: 900;
+        font-size: 1.5rem;
+        z-index: 10000;
+        box-shadow: 0 0 50px rgba(255, 107, 53, 0.8);
+        animation: pulse 2s ease;
+    `;
+    
+    document.body.appendChild(message);
+    
+    setTimeout(() => {
+        message.remove();
+        style.remove();
+        document.body.style.animation = '';
+    }, 5000);
 }
 
-// Initialize animations styles
-addAnimationStyles();
-
-console.log('🌶️ Peter\'s Pepper Co website loaded successfully!');
+// Initialize everything when DOM is ready
+console.log('🌶️ Racing JavaScript Engine Ready to Start! 🏁');
