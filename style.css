@@ -460,3 +460,16 @@ footer {
 .cta-button:hover {
     background-color: var(--secondary-color);
 }
+@font-face {
+  font-family: 'Sunborn';
+  src: url('./fonts/Sunborn.woff2') format('woff2'),
+       url('./fonts/Sunborn.woff') format('woff'),
+       url('./fonts/Sunborn.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Sunborn', sans-serif;
+}
