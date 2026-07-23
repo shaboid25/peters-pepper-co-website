@@ -116,12 +116,22 @@ nav ul li a:hover {
     border-radius: 10px;
 }
 
-/* --- Product Grid --- */
+/* --- Featured Products (home) --- */
+.featured-products {
+    padding: 60px 0;
+    text-align: center;
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    padding: 4rem 20px;
+}
+
+/* --- Story CTA (home) --- */
+.story-cta {
+    padding: 60px 0;
+    text-align: center;
 }
 
 .product-card {
