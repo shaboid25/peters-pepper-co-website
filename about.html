@@ -4,98 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Peter's Pepper Co</title>
+    <meta name="description" content="What started as a backyard hobby in the garden after Peter was born has grown into an artisan hot sauce kitchen. Meet the family behind Peter's Pepper Co.">
+    <meta name="theme-color" content="#262417">
+    <meta property="og:title" content="Our Story - Peter's Pepper Co">
+    <meta property="og:description" content="Bringing the heat since 2023.">
+    <meta property="og:image" content="https://www.peterspepperco.com/images/logo-hero.jpg">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/sunborn-sans-one.otf" as="font" type="font/otf" crossorigin>
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>Peter's Pepper Co</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Peter's Pepper Co. home">
+                <span class="brand-plate"><img src="images/logo-car.png" alt="" width="316" height="236"></span>
+                <span class="brand-text">
+                    <span class="brand-name">Peter's Pepper Co.</span>
+                    <span class="brand-tag">Sweet heat you can't beat!</span>
+                </span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="sr-only">Menu</span><span class="bars" aria-hidden="true"></span>
+            </button>
+            <nav id="site-nav" class="site-nav" aria-label="Main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html" aria-current="page">About</a></li>
+                    <li><a class="nav-cta" href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="hero-section about-hero">
-            <div class="hero-content">
-                <h2>Our Story</h2>
+    <main id="main">
+        <section class="page-hero page-hero--ink">
+            <div class="container">
+                <span class="eyebrow">About us</span>
+                <h1>Our Story</h1>
                 <p>Bringing the heat since 2023</p>
             </div>
         </section>
+        <div class="checker" aria-hidden="true"></div>
 
-        <section class="about-content">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text">
+        <section class="section">
+            <div class="container about-grid">
+                <div class="laps">
+                    <article class="lap reveal" data-lap="01">
                         <h3>The Beginning</h3>
                         <p>What started as a backyard hobby in our garden after Peter was born has grown into an artisan hot sauce kitchen! Sign up for future Sauce Drops or try one of our regular sauces!</p>
-                        <p>Peter's Pepper Co. has joined with Conley Family Farm!</p>
+                        <div class="callout"><p>Peter's Pepper Co. has joined with Conley Family Farm!</p></div>
+                    </article>
 
+                    <article class="lap reveal" data-lap="02">
                         <h3>Our Mission</h3>
                         <p>We're committed to sourcing the finest peppers using our own family and friends' gardens. From mild bell peppers to scorching hot unique peppers, we believe in quality over quantity and maintaining the authentic flavors that make each batch special.</p>
-                        
+                    </article>
+
+                    <article class="lap reveal" data-lap="03">
                         <h3>Quality Promise</h3>
                         <p>Every sauce that leaves our kitchen meets our strict quality standards. We hand-pick each pepper at peak ripeness and ensure our sauces reach you fresh and flavorful. Our commitment to excellence has earned us the trust of our friends and family, and we're ready to share it with you!</p>
-                    </div>
-                    
-                    <div class="about-image">
-                       <img src="images/peterandhotsauce.png" alt="Peter Holding Sauce">
-                            <p>Peter's enthusiasm for his hot sauce is second to nobody!</p>
-                        </div>
-                    </div>
+                    </article>
                 </div>
 
-                <div class="values-section">
-                    <h3>Our Values</h3>
-                    <div class="values-grid">
-                        <div class="value-item">
-                            <h4>🌱 Locally Grown Produce</h4>
-                            <p>We use local farms and even our own garden to source quality peppers.</p>
-                        </div>
-                        <div class="value-item">
-                            <h4>🔥 Authentic Flavor</h4>
-                            <p>Each pepper variety is grown to showcase its unique characteristics and heat level.</p>
-                        </div>
-                        <div class="value-item">
-                            <h4>👨‍👩‍👧‍👦 Family Business</h4>
-                            <p>All proceeds will go to our two children, Abigail and Peter.</p>
-                        </div>
-                        <div class="value-item">
-                            <h4>🤝 Community First</h4>
-                            <p>Supporting local restaurants and markets is at the heart of what we do.</p>
-                        </div>
+                <aside class="about-side">
+                    <figure class="polaroid reveal">
+                        <img src="images/peterandhotsauce.png" width="302" height="403" alt="Peter, grinning, holding a bottle of his hot sauce">
+                        <figcaption>Peter's enthusiasm for his hot sauce is second to nobody!</figcaption>
+                    </figure>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section section--paper">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">What drives us</span>
+                    <h2>Our Values</h2>
+                </div>
+                <div class="values-grid">
+                    <div class="value reveal">
+                        <div class="icon" aria-hidden="true">🌱</div>
+                        <h3>Locally Grown Produce</h3>
+                        <p>We use local farms and even our own garden to source quality peppers.</p>
+                    </div>
+                    <div class="value reveal" style="--d: 0.08s">
+                        <div class="icon" aria-hidden="true">🔥</div>
+                        <h3>Authentic Flavor</h3>
+                        <p>Each pepper variety is grown to showcase its unique characteristics and heat level.</p>
+                    </div>
+                    <div class="value reveal" style="--d: 0.16s">
+                        <div class="icon" aria-hidden="true">👨‍👩‍👧‍👦</div>
+                        <h3>Family Business</h3>
+                        <p>All proceeds will go to our two children, Abigail and Peter.</p>
+                    </div>
+                    <div class="value reveal" style="--d: 0.24s">
+                        <div class="icon" aria-hidden="true">🤝</div>
+                        <h3>Community First</h3>
+                        <p>Supporting local restaurants and markets is at the heart of what we do.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div class="container reveal">
+                <h2>Taste the Story</h2>
+                <p>Three fruity sauces, one very enthusiastic founder. Pick your heat level.</p>
+                <a href="products.html" class="btn">Shop Our Sauces</a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Peter's Pepper Co</h4>
-                    <p>Growing quality peppers since 2023</p>
+    <footer class="site-footer">
+        <div class="checker" aria-hidden="true"></div>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <span class="brand-plate"><img src="images/logo-car.png" alt="" width="316" height="236"></span>
+                    <strong>Peter's Pepper Co.</strong>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
+                <p>Growing quality peppers since 2023</p>
+                <p class="footer-note">Sweet heat you can't beat!</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Peter's Pepper Co. All rights reserved.</p>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
+            <div>
+                <h4>Say Hello</h4>
+                <p><a href="mailto:info@conleyfamilyfarm.com">info@conleyfamilyfarm.com</a></p>
+                <p>Peter's Pepper Co. has joined with Conley Family Farm!</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; <span data-year>2026</span> Peter's Pepper Co. All rights reserved.</p>
         </div>
     </footer>
 
